@@ -9,7 +9,6 @@ function computerPlay() {
     if(randomNumber === 3) return "Scissors";
 }
 
-// let computerSelection = computerPlay();
 
 /////////////////////////////
 // User selection setup
@@ -19,16 +18,8 @@ function userPlay() {
     return userChoice[0].toUpperCase() + userChoice.substring(1);
 }
 
-// let playerSelection = userPlay();
-
-
-// let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?").toLowerCase();
-
-// // Capitalising user's selection
-// let playerSelection = userChoice[0].toUpperCase() + userChoice.substring(1);
-
 /////////////////////////////
-// Round function
+// Single round function
 
 let winner;
 let computerSelection;
@@ -39,25 +30,23 @@ function playRound(computerSelection,playerSelection) {
     computerSelection = computerPlay();
     playerSelection = userPlay();
 
-    console.log(`This is computer selection: ${computerSelection} and this is player\'s selection: ${playerSelection}`);
+    console.log(`Computer\'s selection: ${computerSelection} | Player\'s selection: ${playerSelection}`);
 
     if (playerSelection === "Scissors" || playerSelection === "Rock" || playerSelection === "Paper") {
-        console.log(`Computer chose ${computerSelection}.`);
-        console.log(`You chose ${playerSelection}.`);
 
         switch(true) {
             case computerSelection === "Rock" && playerSelection === "Scissors":
             case computerSelection === "Scissors" && playerSelection === "Paper":
             case computerSelection === "Paper" && playerSelection === "Rock":
             winner = "Computer";
-            console.log(`${computerSelection} beats ${playerSelection}. You loose!😱`, `Winner: ${winner}`)
+            console.log(`${computerSelection} beats ${playerSelection}. You loose!😱`)
             break;
     
             case playerSelection === "Rock" && computerSelection === "Scissors":
             case playerSelection === "Scissors" && computerSelection === "Paper":
             case playerSelection === "Paper" && computerSelection === "Rock":
             winner = "Player";
-            console.log(`${playerSelection} beats ${computerSelection}. You win!👾`, `Winner: ${winner}`)
+            console.log(`${playerSelection} beats ${computerSelection}. You win!👾`)
             break;
     
             case playerSelection === computerSelection:
@@ -76,18 +65,6 @@ function playRound(computerSelection,playerSelection) {
     return;
 };
 
-
-// playRound();
-
-// // Conditional statement to determine whether user entered a valid choice, i.e. Rock, Paper or Scissors
-// if (playerSelection === "Scissors" || playerSelection === "Rock" || playerSelection === "Paper") {
-//     console.log(`Computer chose ${computerSelection}.`);
-//     console.log(`You chose ${playerSelection}.`);
-//     playRound(computerSelection, playerSelection);
-// } else {
-//     console.log("This weapon doesn't exist! Reload and start over.");   
-// };
-
 ///////////////////////////
 // 5 round game function
 
@@ -101,7 +78,7 @@ function game() {
         
         if(winner === "Computer"){
             computerScore += 1;
-            console.log(`Computer: ${computerScore} | Player: ${playerScore}`);
+            console.log(`---- Computer: ${computerScore} | Player: ${playerScore}----`);
         } else if(winner === "Player"){
             playerScore += 1
             console.log(`Computer: ${computerScore} | Player: ${playerScore}`);
@@ -122,10 +99,3 @@ function game() {
 }
 
 game();
-
-
-// playRound();
-// playRound();
-// playRound();
-// playRound();
-// playRound();
