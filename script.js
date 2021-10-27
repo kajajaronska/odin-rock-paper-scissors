@@ -1,6 +1,8 @@
 /////////////////////////////
 // Computer selection setup
 
+alert("This game currently works only in Console. To open press: Option + ⌘ + J (on macOS), or Shift + CTRL + J (on Windows/Linux) and head to Console tab")
+
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3 + 1);
 
@@ -14,7 +16,7 @@ function computerPlay() {
 // User selection setup
 
 function userPlay() {
-    let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?").toLowerCase();
+    let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?","").toLowerCase();
     return userChoice[0].toUpperCase() + userChoice.substring(1);
 }
 
@@ -69,16 +71,18 @@ function playRound(computerSelection,playerSelection) {
 // 5 round game function
 
 function game() {
+    // Setting initial scores to 0
     computerScore = 0;
     playerScore = 0;
 
+    // Looping 5 times for 5 rounds
     for (let i=1; i <= 5; i++) {
         console.log(`Round:${i}`)
         playRound();
         
         if(winner === "Computer"){
             computerScore += 1;
-            console.log(`---- Computer: ${computerScore} | Player: ${playerScore}----`);
+            console.log(`---- Computer: ${computerScore} | Player: ${playerScore} ----`);
         } else if(winner === "Player"){
             playerScore += 1
             console.log(`Computer: ${computerScore} | Player: ${playerScore}`);
@@ -89,6 +93,7 @@ function game() {
 
     } 
 
+    // Announcing final score after last round 
     if(computerScore > playerScore) console.log(`Computer won this game!`);
     else if(playerScore > computerScore) console.log(`Well done! You won this game!`);
     else{
