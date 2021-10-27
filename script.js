@@ -11,13 +11,19 @@ function computerPlay() {
     if(randomNumber === 3) return "Scissors";
 }
 
-
 /////////////////////////////
 // User selection setup
 
+// function capitalizeFirstLetter(string) {
+//     let lowerCase = string.
+
+// }
+
 function userPlay() {
-    let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?","").toLowerCase();
-    return userChoice[0].toUpperCase() + userChoice.substring(1);
+
+    let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?"," ");
+    if(userChoice) return userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
+    else console.log("Okay then, bye!");
 }
 
 /////////////////////////////
@@ -27,7 +33,7 @@ let winner;
 let computerSelection;
 let playerSelection;
 
-function playRound(computerSelection,playerSelection) {
+function playRound() {
 
     computerSelection = computerPlay();
     playerSelection = userPlay();
@@ -41,7 +47,7 @@ function playRound(computerSelection,playerSelection) {
             case computerSelection === "Scissors" && playerSelection === "Paper":
             case computerSelection === "Paper" && playerSelection === "Rock":
             winner = "Computer";
-            console.log(`${computerSelection} beats ${playerSelection}. You loose!😱`)
+            console.log(`${computerSelection} beats ${playerSelection}. You lose!😱`)
             break;
     
             case playerSelection === "Rock" && computerSelection === "Scissors":
@@ -61,7 +67,8 @@ function playRound(computerSelection,playerSelection) {
     
         };
     } else {
-        console.log("This weapon doesn't exist! Reload and start over.");   
+        winner = "Computer"
+        console.log("This weapon doesn't exist! You lost a point.");   
     };
         
     return;
@@ -79,6 +86,7 @@ function game() {
     for (let i=1; i <= 5; i++) {
         console.log(`Round:${i}`)
         playRound();
+
         
         if(winner === "Computer"){
             computerScore += 1;
