@@ -14,7 +14,7 @@
     <!-- HEADER SECTION -->
     <div id="header-section" class="container">
         <h1 class="main-header">ROCK - PAPER - SCISSORS</h1>
-        <h2 class="round-header">ROUND:1</h2>
+        <p class="instructions-paragraph">Click on your choice to start! First to 5 points WINS!🏆</p>
     </div>
 
     <!-- WEAPON SECTION -->
@@ -32,17 +32,20 @@
         </div>
     </div>
 
+
+<!-- GAME STATS CONTAINER -->
+<div id="game-stats-container" class="container">
     <!-- SCORE SECTION -->
     <div id="score-section" class="container">
         
-        <div class="enemy-score">
+        <div class="score-card">
             <h2>ENEMY</h2>
             <h2>2</h2>
         </div>
-        <div class="color">
+        <div class="colon">
             <h2>:</h2>
         </div>
-        <div class="user-score">
+        <div class="score-card">
             <h2>YOU</h2>
             <h2>3</h2>
         </div>
@@ -51,10 +54,17 @@
     <!-- GAME LOG SECTION -->
     <div id="game-log-section" class="container">
         <h2>GAME LOG</h2>
-        <p>ROUND 1:</p><p>ENEMY: ROCK | YOU: PAPER</p>
-        <p>ROCK BEATS PAPER: POINT FOR THE ENEMY!💥</p>
+        <div class="game-log">
+            <div class="round">   <p class="round-name">ROUND 1:</p><p class="round-print"> 🏆 ENEMY: ROCK  | YOU: PAPER 💔</p></div>
+            <div class="round">   <p class="round-name">ROUND 2:</p><p class="round-print"> 💔 ENEMY: PAPER| YOU: SCISSORS 🏆</p></div>
+            <div class="round">   <p class="round-name">ROUND 3:</p><p class="round-print"> 🏆 ENEMY: ROCK  | YOU: PAPER</p></div>
+
+        </div>
+        
+
     </div>
     
+</div>
     
 </body>
 </html>
