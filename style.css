@@ -1,3 +1,76 @@
+/* SPACING SYSTEM (px)
+2 / 4 / 6 / 8 / 12 / 16 / 24 /
+32 / 48 / 64 / 80 / 96 / 128
+*/
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Condensed&family=Roboto+Mono&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    /* font-size: 10px; */
+    /* 10px / 16px = 0.625 = 62.5% */
+    /* Percentage of user's browser font-size setting */
+    font-size: 62.5%;
+}
+
 body {
-    background-color: aquamarine;
+    background-color: white;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 100;
+    max-width: 100vw;
+
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+div {
+    border: rebeccapurple solid;
+}
+
+/* HEADER SECTION */
+
+#header-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding: 2rem;
+}
+
+.main-header {
+    font-family: 'Monoton', cursive;;
+    font-size: 7rem;
+    font-weight: 100;
+}
+
+.round-header {
+    font-size: 4rem;
+    font-weight: 100;
+}
+
+/* WEAPON SECTION */
+
+#weapon-section {
+    display: flex;
+    gap: 5rem;
+    padding: 2rem;
+}
+
+.weapon-img {
+    width: 30rem;
+    height: auto;
+}
+
+#score-section {
+    display: flex;
 }

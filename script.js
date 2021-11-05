@@ -1,7 +1,7 @@
 /////////////////////////////
 // Computer selection setup
 
-alert("This game currently works only in Console. To open press: Option + ⌘ + J (on macOS), or Shift + CTRL + J (on Windows/Linux) and head to Console tab")
+
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3 + 1);
@@ -21,7 +21,7 @@ function computerPlay() {
 
 function userPlay() {
 
-    let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?"," ");
+    // let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?"," ");
     if(userChoice) return userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
     else console.log("Okay then, bye!");
 }
