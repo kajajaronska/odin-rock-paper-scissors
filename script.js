@@ -1,7 +1,13 @@
+// QUERY SELECTORS
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const userScore = document.querySelector('.user-score');
+const enemyScore = document.querySelector('.enemy-score');
+
+
 /////////////////////////////
 // Computer selection setup
-
-
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3 + 1);
@@ -14,17 +20,26 @@ function computerPlay() {
 /////////////////////////////
 // User selection setup
 
-// function capitalizeFirstLetter(string) {
-//     let lowerCase = string.
 
-// }
+// Function to set user's choice on 'click' event 
 
-function userPlay() {
+let userChoice;
 
-    // let userChoice = prompt("Choose your weapon now 🏹: Rock, Paper or Scissors?"," ");
-    if(userChoice) return userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
-    else console.log("Okay then, bye!");
-}
+rock.addEventListener('click', () => {
+    userChoice = 'Rock';
+    playRound();
+});
+
+paper.addEventListener('click', () => {
+    userChoice = 'Paper';
+    playRound();
+});
+
+scissors.addEventListener('click', () => {
+    userChoice = 'Scissors';
+    playRound();
+});
+
 
 /////////////////////////////
 // Single round function
@@ -36,18 +51,18 @@ let playerSelection;
 function playRound() {
 
     computerSelection = computerPlay();
-    playerSelection = userPlay();
+    playerSelection = userChoice;
 
     console.log(`Computer\'s selection: ${computerSelection} | Player\'s selection: ${playerSelection}`);
 
-    if (playerSelection === "Scissors" || playerSelection === "Rock" || playerSelection === "Paper") {
-
+    
         switch(true) {
             case computerSelection === "Rock" && playerSelection === "Scissors":
             case computerSelection === "Scissors" && playerSelection === "Paper":
             case computerSelection === "Paper" && playerSelection === "Rock":
             winner = "Computer";
             console.log(`${computerSelection} beats ${playerSelection}. You lose!😱`)
+            enemyScore.textContent = '1';
             break;
     
             case playerSelection === "Rock" && computerSelection === "Scissors":
@@ -55,6 +70,7 @@ function playRound() {
             case playerSelection === "Paper" && computerSelection === "Rock":
             winner = "Player";
             console.log(`${playerSelection} beats ${computerSelection}. You win!👾`)
+            userScore.textContent = '1';
             break;
     
             case playerSelection === computerSelection:
@@ -66,13 +82,11 @@ function playRound() {
                 console.log("Whoops! Something went horribly wrong ... Reload?")
     
         };
-    } else {
-        winner = "Computer"
-        console.log("This weapon doesn't exist! You lost a point.");   
-    };
         
     return;
 };
+
+// playRound();
 
 ///////////////////////////
 // 5 round game function
@@ -111,4 +125,4 @@ function game() {
     return;
 }
 
-game();
+// game();
