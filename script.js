@@ -6,6 +6,7 @@ const userScore = document.querySelector('.user-score');
 const enemyScore = document.querySelector('.enemy-score');
 const userName = document.querySelector('.user-name');
 const enemyName = document.querySelector('.enemy-name');
+const gameLog = document.querySelector('.game-log');
 
 
 /////////////////////////////
@@ -42,9 +43,9 @@ scissors.addEventListener('click', () => {
 /////////////////////////////
 // SINGLE ROUND FUNCTION AND SCORE COUNTER
 
-
 let enemyScoreCounter = 0;
 let userScoreCounter = 0;
+let roundCounter;
 
 
 function playRound() {
@@ -59,6 +60,7 @@ function playRound() {
             case computerChoice === "Paper" && userChoice === "Rock":
             console.log(`${computerChoice} beats ${userChoice}. You lose!😱`)
             enemyScoreCounter++;
+            roundCounter++;
             enemyScore.textContent = enemyScoreCounter.toString();
             console.log(enemyScoreCounter, userScoreCounter);
 
@@ -69,6 +71,7 @@ function playRound() {
             case userChoice === "Paper" && computerChoice === "Rock":
             console.log(`${userChoice} beats ${computerChoice}. You win!👾`)
             userScoreCounter++;
+            roundCounter++;
             userScore.textContent = userScoreCounter.toString();
             console.log(enemyScoreCounter, userScoreCounter);
             break;
@@ -76,12 +79,14 @@ function playRound() {
             case userChoice === computerChoice:
             console.log("Draw! Try again 🤷‍♂️");
             console.log(enemyScoreCounter, userScoreCounter);
+            roundCounter++;
             break;
     
             default:
                 console.log("Whoops! Something went horribly wrong ... Reload?")
         };
-    
+        
+        addGameLogRow();
         fivePointsGame();
     return;
 };
@@ -104,7 +109,17 @@ function fivePointsGame () {
 }
 
 
+///////////////////////////
+// GAME LOG FUNCTIONALITY
 
+function addGameLogRow() {
+    const div = document.createElement('div');
+
+    div.className = 'round';
+    div.innerHTML = ('<p class="round-number">ROUND 1:</p><p class="round-print">🏆 ENEMY: ROCK  | YOU: PAPER 💔</p></div>')
+
+    gameLog.append(div);
+}
 
 ///////////////////////////
 // 5 round game function
