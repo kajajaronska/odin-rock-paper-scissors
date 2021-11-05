@@ -111,12 +111,10 @@ function fivePointsGame () {
 function addGameLogRow() {
     const div = document.createElement('div');
     div.className = 'round';
-    if(userChoice !== computerChoice) {
-        div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p class="round-print"> ENEMY: ${computerChoice.toUpperCase()} ${result} YOU: ${userChoice.toUpperCase()}</p></div>`)
-    } else {
-        div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p class="round-print"> ENEMY: ${computerChoice.toUpperCase()} ${result} YOU: ${userChoice.toUpperCase()} </p></div>`)
-    }    
-    gameLog.append(div);
+
+    div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p class="enemy-choice"> ENEMY:${computerChoice.toUpperCase()}</p><p>${result}</p><p class="user-choice">YOU:${userChoice.toUpperCase()}</p></div>`);
+
+    gameLog.prepend(div);
 }
 
 ///////////////////////////
