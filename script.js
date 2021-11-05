@@ -7,6 +7,8 @@ const enemyScore = document.querySelector('.enemy-score');
 const userName = document.querySelector('.user-name');
 const enemyName = document.querySelector('.enemy-name');
 const gameLog = document.querySelector('.game-log');
+const userScoreCard = document.querySelector('.user-card');
+const enemyScoreCard = document.querySelector('.enemy-card');
 
 
 /////////////////////////////
@@ -61,7 +63,9 @@ function playRound() {
             enemyScoreCounter++;
             roundCounter++;
             enemyScore.textContent = enemyScoreCounter.toString();
-            result = '🏆|💔';
+            enemyScoreCard.classList.toggle('winner');
+            userScoreCard.classList.remove('winner');
+            result = '-🏆|💔-';
             break;
     
             case userChoice === "Rock" && computerChoice === "Scissors":
@@ -71,11 +75,15 @@ function playRound() {
             userScoreCounter++;
             roundCounter++;
             userScore.textContent = userScoreCounter.toString();
-            result = '💔|🏆';
+            enemyScoreCard.classList.remove('winner');
+            userScoreCard.classList.toggle('winner');
+            result = '-💔|🏆-';
             break;
     
             case userChoice === computerChoice:
             roundCounter++;
+            userScoreCard.classList.remove('winner');
+            enemyScoreCard.classList.remove('winner');
             result = '-DRAW-'
             break;
     
@@ -112,44 +120,8 @@ function addGameLogRow() {
     const div = document.createElement('div');
     div.className = 'round';
 
-    div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p class="enemy-choice"> ENEMY:${computerChoice.toUpperCase()}</p><p>${result}</p><p class="user-choice">YOU:${userChoice.toUpperCase()}</p></div>`);
+    div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p > ENEMY:${computerChoice.toUpperCase()} ${result} YOU:${userChoice.toUpperCase()}</p></div>`);
 
     gameLog.prepend(div);
 }
 
-///////////////////////////
-// 5 round game function
-
-// function game() {
-//     // Setting initial scores to 0
-//     computerScore = 0;
-//     playerScore = 0;
-
-//     // Looping 5 times for 5 rounds
-//     for (let i=1; i <= 5; i++) {
-//         console.log(`Round:${i}`)
-//         playRound();
-
-        
-//         if(winner === "Computer"){
-//             computerScore += 1;
-//             console.log(`---- Computer: ${computerScore} | Player: ${playerScore} ----`);
-//         } else if(winner === "Player"){
-//             playerScore += 1
-//             console.log(`Computer: ${computerScore} | Player: ${playerScore}`);
-//         } else {
-//             console.log(`Computer: ${computerScore} | Player: ${playerScore}`);
-//         }
-//     } 
-
-//     // Announcing final score after last round 
-//     if(computerScore > playerScore) console.log(`Computer won this game!`);
-//     else if(playerScore > computerScore) console.log(`Well done! You won this game!`);
-//     else{
-//         console.log(`It\'s a draw!`)
-//     }
-
-//     return;
-// }
-
-// game();
