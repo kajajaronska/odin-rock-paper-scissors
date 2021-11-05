@@ -45,41 +45,38 @@ scissors.addEventListener('click', () => {
 
 let enemyScoreCounter = 0;
 let userScoreCounter = 0;
-let roundCounter;
+let roundCounter = 0;
+let result;
 
 
 function playRound() {
 
     computerChoice = computerPlay();
 
-    console.log(`Computer\'s selection: ${computerChoice} | Player\'s selection: ${userChoice}`);
-
         switch(true) {
             case computerChoice === "Rock" && userChoice === "Scissors":
             case computerChoice === "Scissors" && userChoice === "Paper":
             case computerChoice === "Paper" && userChoice === "Rock":
-            console.log(`${computerChoice} beats ${userChoice}. You lose!😱`)
+            
             enemyScoreCounter++;
             roundCounter++;
             enemyScore.textContent = enemyScoreCounter.toString();
-            console.log(enemyScoreCounter, userScoreCounter);
-
+            result = '🏆|💔';
             break;
     
             case userChoice === "Rock" && computerChoice === "Scissors":
             case userChoice === "Scissors" && computerChoice === "Paper":
             case userChoice === "Paper" && computerChoice === "Rock":
-            console.log(`${userChoice} beats ${computerChoice}. You win!👾`)
+           
             userScoreCounter++;
             roundCounter++;
             userScore.textContent = userScoreCounter.toString();
-            console.log(enemyScoreCounter, userScoreCounter);
+            result = '💔|🏆';
             break;
     
             case userChoice === computerChoice:
-            console.log("Draw! Try again 🤷‍♂️");
-            console.log(enemyScoreCounter, userScoreCounter);
             roundCounter++;
+            result = '-DRAW-'
             break;
     
             default:
@@ -108,16 +105,17 @@ function fivePointsGame () {
     }
 }
 
-
 ///////////////////////////
 // GAME LOG FUNCTIONALITY
 
 function addGameLogRow() {
     const div = document.createElement('div');
-
     div.className = 'round';
-    div.innerHTML = ('<p class="round-number">ROUND 1:</p><p class="round-print">🏆 ENEMY: ROCK  | YOU: PAPER 💔</p></div>')
-
+    if(userChoice !== computerChoice) {
+        div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p class="round-print"> ENEMY: ${computerChoice.toUpperCase()} ${result} YOU: ${userChoice.toUpperCase()}</p></div>`)
+    } else {
+        div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p class="round-print"> ENEMY: ${computerChoice.toUpperCase()} ${result} YOU: ${userChoice.toUpperCase()} </p></div>`)
+    }    
     gameLog.append(div);
 }
 
