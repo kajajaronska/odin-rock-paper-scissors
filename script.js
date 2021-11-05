@@ -4,10 +4,12 @@ const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 const userScore = document.querySelector('.user-score');
 const enemyScore = document.querySelector('.enemy-score');
+const userName = document.querySelector('.user-name');
+const enemyName = document.querySelector('.enemy-name');
 
 
 /////////////////////////////
-// Computer selection setup
+// COMPUTER CHOICE SETUP
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3 + 1);
@@ -17,7 +19,7 @@ function computerPlay() {
 }
 
 /////////////////////////////
-// User selection setup
+// USER CHOICE SETUP
 
 let userChoice;
 
@@ -38,11 +40,11 @@ scissors.addEventListener('click', () => {
 
 
 /////////////////////////////
-// Single round function and score counter
+// SINGLE ROUND FUNCTION AND SCORE COUNTER
 
 
 let enemyScoreCounter = 0;
-let playerScoreCounter = 0;
+let userScoreCounter = 0;
 
 
 function playRound() {
@@ -58,7 +60,7 @@ function playRound() {
             console.log(`${computerChoice} beats ${userChoice}. You lose!😱`)
             enemyScoreCounter++;
             enemyScore.textContent = enemyScoreCounter.toString();
-            console.log(enemyScoreCounter, playerScoreCounter);
+            console.log(enemyScoreCounter, userScoreCounter);
 
             break;
     
@@ -66,22 +68,43 @@ function playRound() {
             case userChoice === "Scissors" && computerChoice === "Paper":
             case userChoice === "Paper" && computerChoice === "Rock":
             console.log(`${userChoice} beats ${computerChoice}. You win!👾`)
-            playerScoreCounter++;
-            userScore.textContent = playerScoreCounter.toString();
-            console.log(enemyScoreCounter, playerScoreCounter);
+            userScoreCounter++;
+            userScore.textContent = userScoreCounter.toString();
+            console.log(enemyScoreCounter, userScoreCounter);
             break;
     
             case userChoice === computerChoice:
             console.log("Draw! Try again 🤷‍♂️");
-            console.log(enemyScoreCounter, playerScoreCounter);
+            console.log(enemyScoreCounter, userScoreCounter);
             break;
     
             default:
                 console.log("Whoops! Something went horribly wrong ... Reload?")
         };
-        
+    
+        fivePointsGame();
     return;
 };
+
+///////////////////////////
+// 5 POINTS GAME FUNCTION
+
+function fivePointsGame () {
+    if (enemyScoreCounter === 5) {
+        enemyName.textContent = "🏆ENEMY"
+        enemyName.style.fontSize = "4.2rem";
+        userName.style.fontSize = "4.2rem";
+        enemyName.style.fontWeight = "700";
+    } else if(userScoreCounter === 5) {
+        userName.textContent = "🏆YOU"
+        userName.style.fontSize = "4.5rem";
+        enemyName.style.fontSize = "4.5rem";
+        userName.style.fontWeight = "700";
+    }
+}
+
+
+
 
 ///////////////////////////
 // 5 round game function
