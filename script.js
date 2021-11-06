@@ -63,7 +63,7 @@ function playRound() {
             enemyScoreCounter++;
             roundCounter++;
             enemyScore.textContent = enemyScoreCounter.toString();
-            enemyScoreCard.classList.toggle('winner');
+            enemyScoreCard.classList.add('winner');
             userScoreCard.classList.remove('winner');
             result = '-🏆|💔-';
             break;
@@ -76,7 +76,7 @@ function playRound() {
             roundCounter++;
             userScore.textContent = userScoreCounter.toString();
             enemyScoreCard.classList.remove('winner');
-            userScoreCard.classList.toggle('winner');
+            userScoreCard.classList.add('winner');
             result = '-💔|🏆-';
             break;
     
