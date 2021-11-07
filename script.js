@@ -9,10 +9,17 @@ const enemyName = document.querySelector('.enemy-name');
 const gameLog = document.querySelector('.game-log');
 const userScoreCard = document.querySelector('.user-card');
 const enemyScoreCard = document.querySelector('.enemy-card');
+const modalCloseBtn = document.querySelector('.close-button');
+const modalRepeatBtn = document.querySelector('.repeat-button');
+const modal = document.querySelector('.modal');
+const winnerAnnounce = document.querySelector('.announce-winner');
+// const roundDiv = document.querySelector('.round');
 
 
 /////////////////////////////
 // COMPUTER CHOICE SETUP
+
+modal.classList.add('hidden');
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3 + 1);
@@ -101,15 +108,11 @@ function playRound() {
 
 function fivePointsGame () {
     if (enemyScoreCounter === 5) {
-        enemyName.textContent = "🏆ENEMY"
-        enemyName.style.fontSize = "4.2rem";
-        userName.style.fontSize = "4.2rem";
-        enemyName.style.fontWeight = "700";
+        winnerAnnounce.textContent = "Oh no! Computer beat you!";
+        modal.classList.remove('hidden');
     } else if(userScoreCounter === 5) {
-        userName.textContent = "🏆YOU"
-        userName.style.fontSize = "4.5rem";
-        enemyName.style.fontSize = "4.5rem";
-        userName.style.fontWeight = "700";
+        winnerAnnounce.textContent = "Whoo hoo, you won! Congrats!"
+        modal.classList.remove('hidden');
     }
 }
 
@@ -119,9 +122,39 @@ function fivePointsGame () {
 function addGameLogRow() {
     const div = document.createElement('div');
     div.className = 'round';
-
     div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p > ENEMY:${computerChoice.toUpperCase()} ${result} YOU:${userChoice.toUpperCase()}</p></div>`);
 
     gameLog.prepend(div);
 }
+
+///////////////////////////
+// MODAL FUNCTIONALITY
+
+modalCloseBtn.addEventListener('click',function(){
+    modal.classList.add('hidden')
+});
+
+modalRepeatBtn.addEventListener('click', restartGame);
+
+///////////////////////////
+// RESETTING THE GAME
+
+const roundDivs = document.querySelectorAll('.round');
+
+function restartGame() {
+    modal.classList.add('hidden');
+    enemyScoreCounter = 0;
+    userScoreCounter = 0;
+    roundCounter = 0;
+
+    // Resetting Scoreboard
+    userScore.textContent = '0';
+    enemyScore.textContent = '0';
+    userScoreCard.classList.remove('winner');
+    enemyScoreCard.classList.remove('winner');
+
+    // Resetting Game Log
+    document.querySelectorAll('.round').forEach((element) => element.remove());
+};
+
 

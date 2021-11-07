@@ -174,9 +174,12 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     overflow: auto;
-    /* opacity: 0;
-    visibility: hidden; */
-    /* transform: scale(1.1); */
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
 }
 
 .modal-content {
@@ -186,7 +189,6 @@ body {
     transform: translate(-50%,-50%);
     background-color: white;
     border-radius: 0.5rem;
-    /* width: 50%; */
     padding: 0 1.5rem 1rem 1.5rem;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
@@ -200,6 +202,10 @@ body {
 .repeat-button {
     width: 5rem;
     align-self: flex-end;
+}
+
+.repeat-button:hover,.repeat-button:focus {
+    transform: scale(1.2);
 }
 
 .close-button {
