@@ -99,6 +99,7 @@ function playRound() {
         };
         
         addGameLogRow();
+
         fivePointsGame();
     return;
 };
@@ -123,13 +124,15 @@ function addGameLogRow() {
     const div = document.createElement('div');
     div.className = 'round';
     div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p > ENEMY:${computerChoice.toUpperCase()} ${result} YOU:${userChoice.toUpperCase()}</p></div>`);
-
+    
     gameLog.prepend(div);
 
-    // Highlighting latest round:
+    // Highlighting latest round scores:
     const latestRound = gameLog.firstElementChild;
-
-    console.log(latestRound);
+    const previousRound = gameLog.childNodes[1];
+    previousRound.classList.remove('latestRound');
+    latestRound.classList.add('latestRound');
+ 
 }
 
 ///////////////////////////
