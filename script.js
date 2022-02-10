@@ -125,6 +125,11 @@ function addGameLogRow() {
     div.innerHTML = (`<p class="round-number">ROUND ${roundCounter}</p><p > ENEMY:${computerChoice.toUpperCase()} ${result} YOU:${userChoice.toUpperCase()}</p></div>`);
 
     gameLog.prepend(div);
+
+    // Highlighting latest round:
+    const latestRound = gameLog.firstElementChild;
+
+    console.log(latestRound);
 }
 
 ///////////////////////////
