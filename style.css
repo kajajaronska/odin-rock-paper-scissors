@@ -68,6 +68,7 @@ body {
 .weapon-img {
     width: 27rem;
     height: auto;
+    cursor: pointer;
 }
 
 .grow:hover { transform: scale(1.2); }

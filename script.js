@@ -133,7 +133,7 @@ function addGameLogRow() {
     previousRound.classList.remove('latestRound');
     latestRound.classList.add('latestRound');
  
-}
+};
 
 ///////////////////////////
 // MODAL FUNCTIONALITY
